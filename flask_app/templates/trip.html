@@ -8,29 +8,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<title>Login</title>
+<title>Welcome</title>
 </head>
 <body>
-  <form action="/login" method="post">
-    {% with messages = get_flashed_messages(category_filter= ['login']) %}
-        {% if messages %}
-          {% for message in messages %}
-            <p>{{message}}</p>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-      <h1>Login</h1>
-      <div>
-        <label for="email">Email</label>
-        <input type="text" name="email" class="form-control">
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" class="form-control">
-      </div>
+  <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+  
+  <form action="/new/trip" method="POST">
+    {% with messages = get_flashed_messages(category_filter=['name']) %}
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
-    <button type="submit">Submit</button>
+        <label for="list.name">Name</label>
+        <input type="text" name="list.name" value="{{list.name}}" class="form-control">
+
+        <input type="checkbox" name="item.name" value="{{item.name}}" class="form-control">
+      
+      <button type="submit">Submit</button>
   </form>
+
+  <a href="/create">Create A New List</a>
+  <a href="/trip">Add A New Trip</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
