@@ -28,7 +28,7 @@ class List:
       return False
     return cls(results[0])
   
-   @classmethod
+  @classmethod
   def get_all(cls):
     query = "SELECT * FROM list;"
     results = connectToMySQL(cls.db).query_db(query)
