@@ -26,7 +26,6 @@
     <h2>Trips</h2>
     {% for trip in trips %}
       {{trip.name}}
-      <a href="/edit/{{trip.id}}">Edit</a>
       <a href="/destroy/{{trip.id}}">Delete</a>
     {% endfor %}
   </div>
