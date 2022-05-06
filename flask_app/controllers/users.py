@@ -41,17 +41,16 @@ def login():
   session['user_id'] = user_in_db.id
   return redirect ('/display')
 
-@app.route('/display')
+@app.route('/Welcome')
 def diplay():
   if 'user_id' not in session:
     return redirect ('/logout')
   data = {
     'id':session['user_id']
   }
-  recipes = Recipe.get_all()
+  lists = List.get_all()
   user = User.get_one(data)
-  recipe = Recipe.get_one(data)
-  return render_template("display.html", recipes = recipes, user = user, recipe = recipe)
+  return render_template("display.html", list = list, user = user)
 
 @app.route('/logout') 
 def logout():
