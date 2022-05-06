@@ -48,6 +48,6 @@ class Item:
   def validate(item):
     validate = True
     if len(item['name']) > 20:
-      flash('Item name cannot be more than 20 characters long', 'item')
+      flash('Item name cannot be more than 20 characters long', 'name')
       validate = False
     return validate

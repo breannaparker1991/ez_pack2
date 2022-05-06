@@ -40,10 +40,10 @@ def login():
     flash("Invalid Email/Password", 'login') 
     return redirect('/')
   session['user_id'] = user_in_db.id
-  return redirect ('/display')
+  return redirect ('/welcome')
 
-@app.route('/Welcome')
-def diplay():
+@app.route('/welcome', methods = ['POST'])
+def welcome():
   if 'user_id' not in session:
     return redirect ('/logout')
   data = {
@@ -51,7 +51,9 @@ def diplay():
   }
   lists = List.get_all()
   user = User.get_one(data)
-  return render_template("display.html", list = list, user = user)
+  trips = Trip.get_all()
+  return render_template("welcome.html", lists = lists, user = user, trips = trips)
+
 
 @app.route('/logout') 
 def logout():

@@ -51,6 +51,6 @@ class List:
   def validate(list):
     validate = True
     if len(list['name']) > 20:
-      flash('List name cannot be more than 20 characters long', 'list')
+      flash('List name cannot be more than 20 characters long', 'name')
       validate = False
     return validate

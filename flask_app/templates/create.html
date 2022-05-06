@@ -8,16 +8,31 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<title>Index</title>
+<title>Welcome</title>
 </head>
 <body>
-  <h1>Description</h1>
-    <p></p>
-      I created this website to help people when packing for a trip. I can't tell you how many times I've looked online for pre-packing lists and then I forget something that I had bought specifically for this that wasn't referenced in the list. I frequently forget items, even if I start my list several days in advance. And since I take similar items on similar trips, I always thought it would be cool to have multiple lists saved that had all of the items that I might want to bring for my rock climbing trip or for my scuba diving trip. I have lists for road trips vs plane. This has saved so much time on my part and I really hope that it saves you time and stress as well on your next vacation. 
-    </p>
+  <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+  
+  <form action="/create/list" method="POST">
+    {% with messages = get_flashed_messages(category_filter=['name']) %}
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
-  <a href="/login">Login</a>
-  <a href="/register">Register</a>
+        <label for="list.name">Name</label>
+        <input type="text" name="list.name" value="{{list.name}}" class="form-control">
+
+        <input type="checkbox" name="item.name" value="{{item.name}}" class="form-control">
+      
+      <button type="submit">Submit</button>
+  </form>
+
+  <a href="/create">Create A New List</a>
+  <a href="/trip">Add A New Trip</a>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>

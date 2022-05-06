@@ -8,28 +8,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<title>Welcome</title>
+<title>Edit</title>
 </head>
 <body>
   <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
   
-  <div>
-    <h2>Lists</h2>
-    {% for list in lists %}
-      {{list.name}}
-      <a href="/edit/{{list.id}}">Edit</a>
-      <a href="/destroy/{{list.id}}">Delete</a>
-    {% endfor %}
-  </div>
+  <form action="/update" method="POST">
+    {% with messages = get_flashed_messages(category_filter=['name']) %}
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <input type="hidden" name="id" value={{list.id}}>
+      <div class="form-group">
+        <label for="list.name">Name</label>
+        <input type="text" name="list.name" value="{{list.name}}" class="form-control">
+      </div>
 
-  <div>
-    <h2>Trips</h2>
-    {% for trip in trips %}
-      {{trip.name}}
-      <a href="/edit/{{trip.id}}">Edit</a>
-      <a href="/destroy/{{trip.id}}">Delete</a>
-    {% endfor %}
-  </div>
+      {% for item in items %}
+      <div class="form-group">
+        <input type="checkbox" name="item.name" value="{{item.name}}" class="form-control">
+      </div>
+      {% endfor %}
+
+      <button type="submit">Submit</button>
+  </form>
 
   <a href="/create">Create A New List</a>
   <a href="/trip">Add A New Trip</a>
