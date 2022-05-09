@@ -28,7 +28,7 @@ def create():
   List.save(data)
   return redirect('/add/items')
 
-@app.route('/add/items/<int:id>', methods=['POST'])
+@app.route('/add/items/<int:id>')
 def add_items(id):
   if 'user_id' not in session:
     return redirect ('/logout')
@@ -41,6 +41,17 @@ def add_items(id):
   list = List.get_one(data)
   user = User.get_one(user)
   return render_template('items.html', list = list, user = user)
+
+@app.route('/more/items', methods=['POST'])
+def more():
+  if 'user_id' not in session:
+    return redirect ('/logout')
+  print(request.form)
+  data = {
+    'name': request.form['name'],
+  }
+  Item.save(data)
+  return redirect('/welcome')
 
 @app.route('/destroy/<int:id>')
 def destroy_list(id):
