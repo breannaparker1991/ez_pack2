@@ -1,7 +1,7 @@
 from flask_app import app
-from flask_app.controllers import users, trips, items, lists
+from flask_app.controllers import users, trips, lists
 
-if __name__ =="main":
+if __name__ =="__main__":
   app.run(debug=True)
   
   

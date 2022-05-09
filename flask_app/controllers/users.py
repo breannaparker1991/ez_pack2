@@ -10,8 +10,12 @@ bcrypt = Bcrypt(app)
 def index():
   return render_template("index.html")
 
-@app.route('/register', methods =['POST'])
+@app.route('/register')
 def register():
+  return render_template('register.html')
+
+@app.route('/register/now', methods =['POST'])
+def register_now():
   if not User.validate(request.form):
     return redirect('/')
   pw_hash = bcrypt.generate_password_hash(request.form['password'])
@@ -27,10 +31,14 @@ def register():
     flash("Email already taken, please register")
     return redirect('/')
   session['user_id'] = id
-  return redirect ('/display')
+  return redirect ('/welcome')
 
-@app.route('/login', methods = ['POST'])
+@app.route('/login')
 def login():
+  return render_template('login.html')
+
+@app.route('/login/now', methods = ['POST'])
+def login_now():
   data = {'email': request.form['email']}
   user_in_db = User.get_email(data)
   if not user_in_db:
@@ -42,7 +50,7 @@ def login():
   session['user_id'] = user_in_db.id
   return redirect ('/welcome')
 
-@app.route('/welcome', methods = ['POST'])
+@app.route('/welcome')
 def welcome():
   if 'user_id' not in session:
     return redirect ('/logout')

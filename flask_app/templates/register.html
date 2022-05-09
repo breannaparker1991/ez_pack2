@@ -11,7 +11,7 @@
 <title>Register</title>
 </head>
 <body>
-  <form action="/register" method="post">
+  <form action="/register/now" method="post">
     {% with messages = get_flashed_messages(category_filter= ['register']) %}
         {% if messages %}
           {% for message in messages %}

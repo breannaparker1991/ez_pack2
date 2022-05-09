@@ -16,7 +16,7 @@ def new():
   return render_template("trip.html", user = User.get_one(data))
   
 @app.route('/new/trip', methods= ['POST'])
-def create():
+def new_trip():
   if 'user_id' not in session:
     return redirect ('/logout')
   if not List.validate(request.form):
@@ -31,7 +31,7 @@ def create():
   return redirect('/welcome')
 
 @app.route('/destroy/<int:id>')
-def destroy(id):
+def destroy_trip(id):
   if 'user_id' not in session:
     return redirect('/logout')
   data = {

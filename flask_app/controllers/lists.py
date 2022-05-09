@@ -5,7 +5,7 @@ from flask_app.models.list import List
 from flask_app.models.trip import Trip
 from flask_app.models.item import Item
 
-app.route('/create')
+@app.route('/create')
 def new():
   if 'user_id' not in session:
     return redirect('/logout')
@@ -26,10 +26,24 @@ def create():
     'name': request.form['name'],
   }
   List.save(data)
-  return redirect('/welcome')
+  return redirect('/add/items')
+
+@app.route('/add/items/<int:id>', methods=['POST'])
+def add_items(id):
+  if 'user_id' not in session:
+    return redirect ('/logout')
+  data = {
+    'id': id
+  }
+  user = {
+    'id': session['user_id']
+  }
+  list = List.get_one(data)
+  user = User.get_one(user)
+  return render_template('items.html', list = list, user = user)
 
 @app.route('/destroy/<int:id>')
-def destroy(id):
+def destroy_list(id):
   if 'user_id' not in session:
     return redirect('/logout')
   data = {
