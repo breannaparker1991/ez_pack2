@@ -17,7 +17,7 @@ class List:
 
   @classmethod
   def save(cls,data):
-    query = "INSERT INTO list (name, description) VALUES ( %(name)s, %(description)s);"
+    query = "INSERT INTO list (name, description, user_id) VALUES ( %(name)s, %(description)s, %(user_id)s);"
     return connectToMySQL(cls.db).query_db(query,data) 
 
   @classmethod

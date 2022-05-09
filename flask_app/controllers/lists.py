@@ -24,9 +24,12 @@ def create():
   print(request.form)
   data = {
     'name': request.form['name'],
+    'description': request.form['description'],
+    'user_id': session['user_id'],
   }
-  List.save(data)
-  return redirect('/add/items')
+  list = List.save(data)
+  print(list)
+  return redirect(f'/add/items/{list}')
 
 @app.route('/add/items/<int:id>')
 def add_items(id):
