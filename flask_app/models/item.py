@@ -8,9 +8,7 @@ class Item:
     self.name = db_data['name']
     self.created_at = db_data['created_at']
     self.updated_at = db_data['updated_at']
-    self.list_id = db_data['list_id']
-    self.list_user_id = db_data['list_user_id']
-    self.list_trip_id = db_data['list_trip_id']  
+    self.list_id = db_data['list_id'] 
     
   @classmethod
   def get_all(cls):
