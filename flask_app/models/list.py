@@ -31,10 +31,10 @@ class List:
   def get_all(cls):
     query = "SELECT * FROM list;"
     results = connectToMySQL(cls.db).query_db(query)
-    recipes = []
+    lists = []
     for r in results:
-      recipes.append(cls(r))
-    return recipes
+      lists.append(cls(r))
+    return lists
   
   @classmethod
   def destroy(cls, data):
