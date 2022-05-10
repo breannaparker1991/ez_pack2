@@ -29,8 +29,23 @@ def new_trip():
     'name': request.form['name'],
     'description': request.form['description'],
   }
-  Trip.save(data)
-  return redirect('/welcome')
+  trip = Trip.save(data)
+  return redirect(f'/list/trip/{trip}')
+
+@app.route('/list/trip/<int:id>')
+def list_trip(id):
+  if 'user_id' not in session:
+    return redirect ('/logout')
+  data = {
+    'id': id
+  }
+  user = {
+    'id': session['user_id'], 
+  }
+  list = List.get_one(data)
+  items = Item.get_all()
+  user = User.get_one(user)
+  return render_template('final_trip.html', list = list, items = items, user = user)
 
 @app.route('/destroy/trip/<int:id>')
 def destroy_trip(id):

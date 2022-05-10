@@ -62,7 +62,7 @@ def update():
   if 'user_id' not in session:
     return redirect ('/logout')
   if not List.validate(request.form):
-    return redirect('/new')
+    return redirect('/create/list')
   data = {
     'name': request.form['name'],
     'description': request.form['description'], 

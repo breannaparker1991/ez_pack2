@@ -14,7 +14,7 @@
   <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
   
   <form action="/update" method="POST">
-    {% with messages = get_flashed_messages(category_filter=['length']) %}
+    {% with messages = get_flashed_messages(category_filter=['name']) %}
       {% if messages %}
         {% for message in messages %}
           {{message}}
@@ -33,7 +33,7 @@
 
       {% for item in items %}
       <div class="form-group">
-        <input type="checkbox" name="item.name" value="{{item.name}}" class="form-control">
+        <input type="text" name="item.name" value="{{item.name}}" class="form-control">
       </div>
       {% endfor %}
 
@@ -42,6 +42,7 @@
 
   <a href="/create">Create A New List</a>
   <a href="/trip">Add A New Trip</a>
+  <a href="/welcome">Back to Home</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
