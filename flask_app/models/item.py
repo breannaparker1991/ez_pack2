@@ -39,7 +39,7 @@ class Item:
   
   @classmethod
   def update(cls,data):
-    query = "UPDATE list SET name=%(name)s, updated_at = NOW() WHERE id = %(id)s;"
+    query = "UPDATE item SET name=%(name)s, updated_at = NOW() WHERE id = %(id)s;"
     return connectToMySQL(cls.db).query_db(query,data)
 
   @staticmethod

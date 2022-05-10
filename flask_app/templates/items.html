@@ -22,15 +22,16 @@
       {% endif %}
     {% endwith %}
       <h3>{{list.name}}</h3>
-        <label for="name">Name</label>
-        <input type="text" name="name" class="form-control">
-      
+      {% for i in range(0,30) %}
+          <label for="name">Name</label>
+          <input type="text" name="name" class="form-control">
+      {% endfor %}
       <button type="submit">Submit</button>
   </form>
 
-  <a href="/create">Create A New List</a>
-  <a href="/trip">Add A New Trip</a>
-  <a href="/welcome">Back to Home</a>
+  <button class="btn btn-dark"><a href="/create">Create A New List</a></button> 
+  <button class="btn btn-dark"><a href="/trip">Add A New Trip</a></button>
+  <button class="btn btn-danger"><a href="/welcome">Back to Home</a></button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
