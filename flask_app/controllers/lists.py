@@ -75,6 +75,7 @@ def edit(id):
   }
   user = {
     'id': session['user_id']
+    
   }
   list = List.get_one(data)
   user = User.get_one(user)
@@ -90,6 +91,7 @@ def update():
   data = {
     'name': request.form['name'],
     'description': request.form['description'], 
+    'id': session['user_id'],
   }
   List.update(data)
   return redirect('/welcome')

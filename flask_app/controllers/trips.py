@@ -13,7 +13,9 @@ def new():
   data = {
     'id': session['user_id']
   }
-  return render_template("trip.html", user = User.get_one(data))
+  lists = List.get_all()
+  user = User.get_one(data)
+  return render_template("trip.html", user = user, lists = lists)
   
 @app.route('/new/trip', methods= ['POST'])
 def new_trip():

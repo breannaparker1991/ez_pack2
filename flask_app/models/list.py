@@ -12,7 +12,6 @@ class List:
     self.created_at = db_data['created_at']
     self.updated_at = db_data['updated_at']
     self.user_id = db_data['user_id']
-    self.trip_id = db_data['trip_id']
 
 
   @classmethod
