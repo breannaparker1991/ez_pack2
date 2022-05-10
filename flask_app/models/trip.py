@@ -37,7 +37,7 @@ class Trip:
   
   @classmethod
   def destroy(cls, data):
-    query = "DELETE FROM trip WHERE list.id = %(id)s;"
+    query = "DELETE FROM trip WHERE trip.id = %(id)s;"
     return connectToMySQL(cls.db).query_db(query,data)
   
   @classmethod

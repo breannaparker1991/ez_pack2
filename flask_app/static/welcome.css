@@ -18,3 +18,20 @@ h1{
 .text{
   width: 500px;
 }
+
+.welcome, .lists, .trips{
+  display: flex;
+}
+
+.welcome{
+  justify-content: row;
+  border: black 5pc solid black;
+}
+
+.lists, .trips{
+  width: 500px;
+}
+
+.lists{
+  justify-content: column;
+}

@@ -7,31 +7,44 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}">
 <title>Welcome</title>
 </head>
 <body>
-  <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+  <div>
+    <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+  </div>
   
-  <div>
-    <h2>Lists</h2>
-    {% for list in lists %}
-      {{list.name}}
-      <a href="/edit/{{list.id}}">Edit</a>
-      <a href="/destroy/{{list.id}}">Delete</a>
-    {% endfor %}
+  <div class="welcome">
+    <div>
+      <h2 class="text-center">Lists</h2>
+      <div class="lists">
+        {% for list in lists %}
+        <div>
+          {{list.name}}
+          <button class="btn btn-warning"><a href="/edit/{{list.id}}">Edit</a></button>
+          <button class="btn btn-warning"><a href="/destroy/list/{{list.id}}">Delete</a></button>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-center">Trips</h2>
+      <div class="trips">
+        {% for trip in trips %}
+          {{trip.name}}
+          <button class="btn btn-warning">
+            <a href="/destroy/trip/{{trip.id}}">Delete</a>
+          </button>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 
   <div>
-    <h2>Trips</h2>
-    {% for trip in trips %}
-      {{trip.name}}
-      <a href="/destroy/{{trip.id}}">Delete</a>
-    {% endfor %}
+    <button class="btn btn-dark"><a href="/create">Create A New List</a></button>
+    <button class="btn btn-dark"><a href="/trip">Add A New Trip</a></button>
   </div>
-
-  <a href="/create">Create A New List</a>
-  <a href="/trip">Add A New Trip</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>

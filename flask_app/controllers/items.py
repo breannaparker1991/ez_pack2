@@ -6,38 +6,38 @@ from flask_app.models.trip import Trip
 from flask_app.models.item import Item
 
 
-app.route('/trip')
-def new():
-  if 'user_id' not in session:
-    return redirect('/logout')
-  data = {
-    'id': session['user_id']
-  }
-  lists = List.get_all()
-  user = User.get_one(data)
-  return render_template("trip.html", user = user, lists = lists)
-  
-@app.route('/new/trip', methods= ['POST'])
-def new_trip():
+@app.route('/add/items/<int:id>')
+def add_items(id):
   if 'user_id' not in session:
     return redirect ('/logout')
-  if not List.validate(request.form):
-    print('oops, theres a problem')
-    return redirect('/new')
+  data = {
+    'id': id
+  }
+  user = {
+    'id': session['user_id'], 
+  }
+  list = List.get_one(data)
+  user = User.get_one(user)
+  return render_template('items.html', list = list, user = user)
+
+@app.route('/more/items', methods=['POST'])
+def more():
+  if 'user_id' not in session:
+    return redirect ('/logout')
   print(request.form)
   data = {
     'name': request.form['name'],
-    'description': request.form['description'],
+    # 'id': session['list_id']
   }
-  Trip.save(data)
+  Item.save(data)
   return redirect('/welcome')
 
-@app.route('/destroy/trip/<int:id>')
-def destroy_trip(id):
+@app.route('/destroy/item/<int:id>')
+def destroy_items(id):
   if 'user_id' not in session:
     return redirect('/logout')
   data = {
     'id' : id
   }
-  Trip.destroy(data)
+  Item.destroy(data)
   return redirect('/welcome')

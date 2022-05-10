@@ -21,17 +21,17 @@ class Item:
   
   @classmethod
   def save(cls,data):
-    query = "INSERT INTO recipe (name) VALUES (%(name)s);"
+    query = "INSERT INTO item (name, list_id) VALUES (%(name)s, %(list_id)s);"
     return connectToMySQL(cls.db).query_db(query,data)
   
   @classmethod
   def destroy(cls, data):
-    query = "DELETE FROM list WHERE list.id = %(id)s;"
+    query = "DELETE FROM item WHERE item.id = %(id)s;"
     return connectToMySQL(cls.db).query_db(query,data)
   
   @classmethod
   def get_one(cls,data):
-    query = "SELECT * FROM list WHERE id = %(id)s;"
+    query = "SELECT * FROM item WHERE id = %(id)s;"
     results = connectToMySQL(cls.db).query_db(query,data)
     if len(results) < 1:
       return False

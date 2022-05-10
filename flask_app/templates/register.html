@@ -7,7 +7,7 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='sign_in.css') }}">
 <title>Register</title>
 </head>
 <body>
@@ -19,28 +19,31 @@
           {% endfor %}
         {% endif %}
       {% endwith %}
-      <h1>Register</h1>
-      <div>
-        <label for="first_name">First Name</label>
-        <input type="text" name="first_name" id="first_name" class="form-control" required>
+      <div class="form-register">
+
+        <h1>Register</h1>
+        <div>
+          <label for="first_name">First Name</label>
+          <input type="text" name="first_name" id="first_name" class="form-control" required>
+        </div>
+        <div>
+          <label for="last_name">Last Name</label>
+          <input type="text" name="last_name" id="last_name" class="form-control" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" class="form-control" required>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+        <div>
+          <label for="confirm_pass">Confirm Password</label>
+          <input type="password" name="confirm_pass" id="confirm_pass" class="form-control" required>
+        </div>
+      <button type="submit">Submit</button>
       </div>
-      <div>
-        <label for="last_name">Last Name</label>
-        <input type="text" name="last_name" id="last_name" class="form-control" required>
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" class="form-control" required>
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="form-control" required>
-      </div>
-      <div>
-        <label for="confirm_pass">Confirm Password</label>
-        <input type="password" name="confirm_pass" id="confirm_pass" class="form-control" required>
-      </div>
-    <button type="submit">Submit</button>
   </form>
   
   
