@@ -19,19 +19,38 @@ h1{
   width: 500px;
 }
 
-.welcome, .lists, .trips{
+.welcome {
   display: flex;
 }
 
 .welcome{
-  justify-content: row;
-  border: black 5pc solid black;
+  width: 1200px;
+}   
+.card{
+  width: 500px;
+  margin: 30px;
 }
 
-.lists, .trips{
+button{
+  margin: 10px;
+}
+
+/* .lists, .trips{
   width: 500px;
+  flex-direction: column;
 }
 
 .lists{
   justify-content: column;
 }
+
+.justify{
+  justify-content: space-between;
+}
+
+.aligning{
+  flex: 1;
+  margin: 10px;
+  padding: 10px;
+  border: 5px ;
+} */

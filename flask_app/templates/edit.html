@@ -14,7 +14,7 @@
   <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
   
   <form action="/update" method="POST">
-    {% with messages = get_flashed_messages(category_filter=['name']) %}
+    {% with messages = get_flashed_messages(category_filter=['length']) %}
       {% if messages %}
         {% for message in messages %}
           {{message}}
@@ -37,7 +37,7 @@
       </div>
       {% endfor %}
 
-      <button type="submit">Submit</button>
+      <button class="btn btn-dark" type="submit">Save</button>
   </form>
 
   <a href="/create">Create A New List</a>

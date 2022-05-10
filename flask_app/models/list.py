@@ -49,7 +49,10 @@ class List:
   @staticmethod
   def validate(list):
     validate = True
-    if len(list['name']) > 20:
-      flash('List name cannot be more than 20 characters long', 'name')
+    if len(list['name']) < 20:
+      flash('List name cannot be more than 20 characters long', 'length')
+      validate = False
+    if len(list['description']) < 20:
+      flash('List description cannot be more than 20 characters long', 'length')
       validate = False
     return validate

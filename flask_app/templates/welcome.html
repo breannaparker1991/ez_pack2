@@ -16,28 +16,24 @@
   </div>
   
   <div class="welcome">
-    <div>
-      <h2 class="text-center">Lists</h2>
-      <div class="lists">
+    <div class="card card text-white text-center bg-info mb-3, aligning">
+      <h2 class="card-header">Lists</h2>
         {% for list in lists %}
-        <div>
+        <div class="d-flex justify-content-around card-body bg-info">
           {{list.name}}
           <button class="btn btn-warning"><a href="/edit/{{list.id}}">Edit</a></button>
           <button class="btn btn-warning"><a href="/destroy/list/{{list.id}}">Delete</a></button>
-        {% endfor %}
         </div>
-      </div>
-    </div>
-    <div>
-      <h2 class="text-center">Trips</h2>
-      <div class="trips">
-        {% for trip in trips %}
-          {{trip.name}}
-          <button class="btn btn-warning">
-            <a href="/destroy/trip/{{trip.id}}">Delete</a>
-          </button>
         {% endfor %}
-      </div>
+    </div>
+    <div class="aligning, card text-white bg-info mb-3">
+      <h2 class="card-header">Trips</h2>
+        <div class="d-flex justify-content-around card-body bg-info">
+          {% for trip in trips %}
+            {{trip.name}}
+            <button class="btn btn-warning"><a href="/destroy/trip/{{trip.id}}">Delete</a></button>
+        </div>
+        {% endfor %}
     </div>
   </div>
 
