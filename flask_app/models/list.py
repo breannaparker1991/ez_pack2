@@ -1,5 +1,3 @@
-from msilib.schema import Class
-from sqlite3 import dbapi2
 from flask import flash
 from flask_app.config.mysqlconnection import MySQLConnection, connectToMySQL
 
@@ -8,6 +6,7 @@ class List:
   def __init__ (self, db_data):
     self.id = db_data['id']
     self.name = db_data['name']
+    self.item = db_data['item']
     self.description = db_data['description']
     self.created_at = db_data['created_at']
     self.updated_at = db_data['updated_at']
@@ -16,7 +15,7 @@ class List:
 
   @classmethod
   def save(cls,data):
-    query = "INSERT INTO list (name, description, user_id) VALUES ( %(name)s, %(description)s, %(user_id)s);"
+    query = "INSERT INTO list (name, description, item, user_id) VALUES ( %(name)s, %(description)s,%(item)s, %(user_id)s);"
     return connectToMySQL(cls.db).query_db(query,data) 
 
   @classmethod
@@ -43,7 +42,7 @@ class List:
   
   @classmethod
   def update(cls,data):
-    query = "UPDATE list SET name=%(name)s, description = %(description)s;"
+    query = "UPDATE list SET name=%(name)s, description = %(description)s, item=%(item)s;"
     return connectToMySQL(cls.db).query_db(query,data)
 
   @staticmethod

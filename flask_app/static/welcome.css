@@ -21,13 +21,12 @@ h1{
 
 .welcome {
   display: flex;
+  width: 1200px;
 }
 
-.welcome{
-  width: 1200px;
-}   
+
 .card{
-  width: 500px;
+  width: 600px;
   margin: 30px;
 }
 

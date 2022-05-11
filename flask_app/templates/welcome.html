@@ -20,7 +20,7 @@
       <h2 class="card-header">Lists</h2>
         {% for list in lists %}
         <div class="d-flex justify-content-around card-body bg-info">
-          {{list.name}}
+          {{list.name}} - {{list.description}}
           <button class="btn btn-warning"><a href="/edit/{{list.id}}">Edit</a></button>
           <button class="btn btn-warning"><a href="/destroy/list/{{list.id}}">Delete</a></button>
         </div>

@@ -15,7 +15,7 @@ class Trip:
     
   @classmethod
   def save(cls,data):
-    query = "INSERT INTO trip (name, description) VALUES ( %(name)s, %(description)s);"
+    query = "INSERT INTO trip (name, description, user_id) VALUES ( %(name)s, %(description)s, %(user_id)s);"
     return connectToMySQL(cls.db).query_db(query,data) 
 
   @classmethod
