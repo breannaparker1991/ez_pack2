@@ -55,7 +55,7 @@ def more():
     # 'id': session['list_id']
   }
   Item.save(data)
-  return redirect('/welcome')
+  return redirect('/add/items/<ind:id>')
 
 @app.route('/destroy/list/<int:id>')
 def destroy_list(id):
