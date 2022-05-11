@@ -5,6 +5,8 @@ from flask_app.models.list import List
 from flask_app.models.trip import Trip
 from flask_app.models.item import Item
 
+
+
 @app.route('/destroy/item/<int:id>')
 def destroy_items(id):
   if 'user_id' not in session:

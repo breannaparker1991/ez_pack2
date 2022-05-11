@@ -10,14 +10,14 @@ class Item:
     self.updated_at = db_data['updated_at']
     self.list_id = db_data['list_id'] 
     
-  @classmethod
-  def get_all(cls):
-    query = "SELECT * FROM item;"
-    results = connectToMySQL(cls.db).query_db(query)
-    recipes = []
-    for r in results:
-      recipes.append(cls(r))
-    return recipes
+  # @classmethod
+  # def get_all(cls):
+  #   query = "SELECT * FROM item;"
+  #   results = connectToMySQL(cls.db).query_db(query)
+  #   recipes = []
+  #   for r in results:
+  #     recipes.append(cls(r))
+  #   return recipes
   
   @classmethod
   def save(cls,data):

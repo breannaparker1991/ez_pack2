@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<title>Welcome</title>
+<title>Trip</title>
 </head>
 <body>
   <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
@@ -21,12 +21,6 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
-
-    <label for="name">Name</label>
-    <input type="text" name="name" class="form-control">
-
-    <label for="description">Description</label>
-    <input type="textarea" name="description" class="form-control">
       
     {% for list in lists %}
       <div class="form-check">

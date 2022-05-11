@@ -95,4 +95,5 @@ def update():
     'id': session['user_id'],
   }
   List.update(data)
+  Item.update(data)
   return redirect('/welcome')
