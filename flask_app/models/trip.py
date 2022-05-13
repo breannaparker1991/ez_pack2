@@ -15,7 +15,7 @@ class Trip:
     
   @classmethod
   def save(cls,data):
-    query = "INSERT INTO trip (name, description, user_id) VALUES ( %(name)s, %(description)s, %(user_id)s);"
+    query = "INSERT INTO trip (name, description, date_range, user_id) VALUES ( %(name)s, %(description)s, %(date_range)s, %(user_id)s );"
     return connectToMySQL(cls.db).query_db(query,data) 
 
   @classmethod
@@ -43,6 +43,16 @@ class Trip:
   @classmethod
   def update(cls,data):
     query = "UPDATE trip SET name=%(name)s, description = %(description)s;"
+    return connectToMySQL(cls.db).query_db(query,data)
+  
+  @classmethod
+  def insert(cls, data):
+    query = "INSERT INTO trip_has_list (trip_id, list_id) VALUES( %(trip_id)s, %(list_id)s )"
+    return connectToMySQL(cls.db).query_db(query,data)
+  
+  @classmethod
+  def trip_list(cls,data):
+    query = "SELECT * FROM trip JOIN trip_has_list on trip.id = trip_has_list.trip_id JOIN trip on trip.id = trip_has_list.trip_id WHERE id = %(id)s"
     return connectToMySQL(cls.db).query_db(query,data)
 
   @staticmethod
