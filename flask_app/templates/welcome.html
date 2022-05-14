@@ -28,8 +28,8 @@
     </div>
     <div class="card card text-white text-center bg-info mb-3, aligning">
       <h2 class="card-header">Trips</h2>
+        {% for trip in trips %}
         <div class="d-flex justify-content-around card-body bg-info">
-          {% for trip in trips %}
             {{trip.name}}
             <button class="btn btn-warning"><a href="/final/trip/{{trip.id}}">View</a></button>
             <button class="btn btn-warning"><a href="/destroy/trip/{{trip.id}}">Delete</a></button>
