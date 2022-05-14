@@ -69,10 +69,9 @@ def final_trip(id):
   user = {
     'id': session['user_id'], 
   }
-  lists = Trip.trip_list(data)
+  trips = Trip.trip_list(data)
   user = User.get_one(user)
-  trip = Trip.get_one(data)
-  return render_template('list_trip.html', lists = lists, user = user, trip = trip)
+  return render_template('final_trip.html', trips = trips, user = user)
 
 @app.route('/destroy/trip/<int:id>')
 def destroy_trip(id):

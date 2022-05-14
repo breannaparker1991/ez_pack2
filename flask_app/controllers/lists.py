@@ -57,8 +57,8 @@ def edit(id):
   # items = Item.get_all()
   return render_template("edit.html", list = list, user = user)
   
-@app.route('/update', methods= ['POST'])
-def update():
+@app.route('/update/<int:id>', methods= ['POST'])
+def update(id):
   if 'user_id' not in session:
     return redirect ('/logout')
   if not List.validate(request.form):

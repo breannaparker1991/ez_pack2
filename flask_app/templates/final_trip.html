@@ -14,9 +14,14 @@
   <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
   
   <div>
-    {{trip.name}}
-    {{list.item}}
+    <h3 class="text-center">{{trips.name}}</h3>
+    {% for list in trips.lists %}
+      <div class="d-flex">{{list.item}}</div>
+    {% endfor %}
     
+    <!-- {% for item in items %}
+      {{item.name}}
+    {% endfor %} -->
   </div>
 
   <button class="btn btn-danger"><a href="/welcome">Back to Home</a></button>

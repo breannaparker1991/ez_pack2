@@ -12,6 +12,7 @@ class Trip:
     self.updated_at = db_data['updated_at']
     self.created_at = db_data['created_at']  
     self.user_id = db_data['user_id']
+    self.lists = []
     
     
   @classmethod
@@ -56,7 +57,6 @@ class Trip:
     query = "SELECT * FROM trip JOIN trip_has_list on trip.id = trip_has_list.trip_id JOIN list on list.id = trip_has_list.list_id WHERE trip.id = %(id)s"
     results= connectToMySQL(cls.db).query_db(query,data)
     one_trip = cls(results[0])
-    one_trip.lists = []
     for one in results:
       list_data = {
         'id' : one['list.id'],
