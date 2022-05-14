@@ -1,5 +1,6 @@
 from flask import flash
 from flask_app.config.mysqlconnection import MySQLConnection, connectToMySQL
+from flask_app.models import list
 
 class Trip:
   db = 'ez_pack'
@@ -63,7 +64,7 @@ class Trip:
         'description': one['list.description'], 
         'updated_at': one['list.updated_at'], 
         'created_at':one['list.created_at'],
-        'item': one['list.item'],
+        'item': one['item'],
         'user_id': one['list.user_id']
       }
       one_trip.lists.append(list.List(list_data))

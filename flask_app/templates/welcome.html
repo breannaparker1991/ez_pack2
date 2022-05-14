@@ -31,7 +31,7 @@
         <div class="d-flex justify-content-around card-body bg-info">
           {% for trip in trips %}
             {{trip.name}}
-            <button class="btn btn-warning"><a href="/final/trip/{{trip.id}}">Edit</a></button>
+            <button class="btn btn-warning"><a href="/final/trip/{{trip.id}}">View</a></button>
             <button class="btn btn-warning"><a href="/destroy/trip/{{trip.id}}">Delete</a></button>
         </div>
         {% endfor %}
