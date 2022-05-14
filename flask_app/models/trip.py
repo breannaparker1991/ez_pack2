@@ -52,8 +52,23 @@ class Trip:
   
   @classmethod
   def trip_list(cls,data):
-    query = "SELECT * FROM trip JOIN trip_has_list on trip.id = trip_has_list.trip_id JOIN trip on trip.id = trip_has_list.trip_id WHERE id = %(id)s"
-    return connectToMySQL(cls.db).query_db(query,data)
+    query = "SELECT * FROM trip JOIN trip_has_list on trip.id = trip_has_list.trip_id JOIN list on list.id = trip_has_list.list_id WHERE trip.id = %(id)s"
+    results= connectToMySQL(cls.db).query_db(query,data)
+    one_trip = cls(results[0])
+    one_trip.lists = []
+    for one in results:
+      list_data = {
+        'id' : one['list.id'],
+        'name': one['list.name'],
+        'description': one['list.description'], 
+        'updated_at': one['list.updated_at'], 
+        'created_at':one['list.created_at'],
+        'item': one['list.item'],
+        'user_id': one['list.user_id']
+      }
+      one_trip.lists.append(list.List(list_data))
+    return one_trip
+
 
   @staticmethod
   def validate(trip):

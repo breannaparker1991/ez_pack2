@@ -26,11 +26,12 @@
         </div>
         {% endfor %}
     </div>
-    <div class="aligning, card text-white bg-info mb-3">
+    <div class="card card text-white text-center bg-info mb-3, aligning">
       <h2 class="card-header">Trips</h2>
         <div class="d-flex justify-content-around card-body bg-info">
           {% for trip in trips %}
             {{trip.name}}
+            <button class="btn btn-warning"><a href="/final/trip/{{trip.id}}">Edit</a></button>
             <button class="btn btn-warning"><a href="/destroy/trip/{{trip.id}}">Delete</a></button>
         </div>
         {% endfor %}

@@ -59,6 +59,21 @@ def list_trip_insert(id):
     Trip.insert(data)
   return redirect('/welcome')
 
+@app.route('/final/trip/<int:id>')
+def final_trip(id):
+  if 'user_id' not in session:
+    return redirect ('/logout')
+  data = {
+    'id': id
+  }
+  user = {
+    'id': session['user_id'], 
+  }
+  lists = Trip.trip_list(data)
+  user = User.get_one(user)
+  trip = Trip.get_one(data)
+  return render_template('list_trip.html', lists = lists, user = user, trip = trip)
+
 @app.route('/destroy/trip/<int:id>')
 def destroy_trip(id):
   if 'user_id' not in session:
