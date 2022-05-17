@@ -19,7 +19,7 @@ def create():
     return redirect ('/logout')
   if not List.validate(request.form):
     print('oops, theres a problem')
-    return redirect('/new')
+    return redirect('/create')
   print(request.form)
   data = {
     'name': request.form['name'],
