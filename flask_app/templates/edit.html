@@ -13,7 +13,7 @@
 <body>
   <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
   
-  <form action="/update/{{list.id}}" method="POST">
+  <form action="/update" method="POST">
     {% with messages = get_flashed_messages(category_filter=['name']) %}
       {% if messages %}
         {% for message in messages %}

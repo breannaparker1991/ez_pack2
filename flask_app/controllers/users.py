@@ -17,7 +17,7 @@ def register():
 @app.route('/register/now', methods =['POST'])
 def register_now():
   if not User.validate(request.form):
-    return redirect('/')
+    return redirect('/register')
   pw_hash = bcrypt.generate_password_hash(request.form['password'])
   print(pw_hash)
   data = {
@@ -28,7 +28,7 @@ def register_now():
   }
   id = User.save(data)
   if not id:
-    flash("Email already taken, please register")
+    flash("Email already taken, please login")
     return redirect('/')
   session['user_id'] = id
   return redirect ('/welcome')

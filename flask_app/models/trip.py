@@ -75,6 +75,9 @@ class Trip:
   def validate(trip):
     validate = True
     if len(trip['name']) > 20:
-      flash('List name cannot be more than 20 characters long', 'name')
+      flash('Trip name cannot be more than 20 characters long', 'trip')
+      validate = False
+    if len(trip['name']) < 1:
+      flash('Trip name is a required field', 'trip')
       validate = False
     return validate

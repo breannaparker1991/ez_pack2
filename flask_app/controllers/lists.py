@@ -57,8 +57,8 @@ def edit(id):
   # items = Item.get_all()
   return render_template("edit.html", list = list, user = user)
   
-@app.route('/update/<int:id>', methods= ['POST'])
-def update(id):
+@app.route('/update', methods= ['POST'])
+def update():
   if 'user_id' not in session:
     return redirect ('/logout')
   if not List.validate(request.form):
@@ -67,7 +67,7 @@ def update(id):
     'name': request.form['name'],
     'description': request.form['description'],
     'item': request.form['item'], 
-    'id': session['user_id'],
+    'id': request.form['id'],
   }
   List.update(data)
   # Item.update(data)

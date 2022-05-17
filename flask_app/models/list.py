@@ -42,16 +42,19 @@ class List:
   
   @classmethod
   def update(cls,data):
-    query = "UPDATE list SET name=%(name)s, description = %(description)s, item=%(item)s;"
+    query = "UPDATE list SET name=%(name)s, description = %(description)s, item=%(item)s WHERE id = %(id)s;"
     return connectToMySQL(cls.db).query_db(query,data)
 
   @staticmethod
   def validate(list):
     validate = True
     if len(list['name']) > 20:
-      flash('List name cannot be more than 20 characters long', 'name')
+      flash('List name cannot be more than 20 characters long', 'list')
+      validate = False
+    if len(list['name']) < 1:
+      flash('List name is a required field', 'list')
       validate = False
     if len(list['description']) > 50:
-      flash('List description cannot be more than 50 characters long', 'name')
+      flash('List description cannot be more than 50 characters long', 'list')
       validate = False
     return validate
