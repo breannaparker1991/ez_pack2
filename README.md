@@ -1,2 +1,2 @@
-# ez_pack2
-flask
+ceated a website with a packing application!
+Basically the user will log in, and create multiple lists depending on what their packing needs are. They can create a list with all of their scuba gear. A list for all of their summer camping equipment. A list with all of their winter camping equipment, a list for their rock climbing gear, etc. Then the user can create a trip, the dates for the trip, and select the activities that they will be doing on this trip (kayaking, summer camping, rock climbing) and the system will then combine all of these lists into one giant list that the user can then check off the items as they are packed. 
